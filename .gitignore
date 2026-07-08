@@ -1,0 +1,31 @@
+# Build output. The patterns are anchored to the repository root on purpose:
+# an unanchored `kubediag` would also match the cmd/kubediag/ directory and
+# quietly exclude the program's entry point from the repository.
+/bin/
+/kubediag
+/kubediag.exe
+/kubediag-*-*
+
+# Test and coverage artefacts
+coverage.out
+coverage.html
+*.test
+
+# Local Go toolchain and caches, kept inside the repo so they stay off the
+# system drive. Never committed.
+/.toolchain/
+/.gopath/
+/.gocache/
+/.gotmp/
+
+# Snapshots taken from real clusters. They are diagnostic data, not source,
+# and even with env redaction they carry object names and topology.
+/snapshot.json
+/*.snapshot.json
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
