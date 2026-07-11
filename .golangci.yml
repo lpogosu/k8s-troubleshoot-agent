@@ -1,0 +1,85 @@
+---
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  default: none
+  enable:
+    - errcheck       # an ignored error in a diagnostic tool means a silent wrong answer
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - bodyclose
+    - errorlint      # %w and errors.As, not string matching on error text
+    - copyloopvar
+    - gocritic
+    - goconst
+    - misspell
+    - nolintlint     # every //nolint must say why
+    - revive
+    - unconvert
+    - unparam
+    - whitespace
+
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+    goconst:
+      min-len: 4
+      min-occurrences: 4
+    gocritic:
+      enabled-tags: [diagnostic, style, performance]
+      disabled-checks:
+        # The rules deliberately spell out each classification branch instead
+        # of collapsing them; readability of the diagnosis wins over brevity.
+        - ifElseChain
+        - singleCaseSwitch
+        # A Finding is 176 bytes and a run produces tens of them, not millions.
+        # Turning every readable `for _, f := range findings` into index
+        # arithmetic would trade clarity for an unmeasurable gain.
+        - rangeValCopy
+        - hugeParam
+        # The next-step commands embed jsonpath expressions that need literal
+        # escaped quotes inside a shell-quoted argument. %q would add a second
+        # pair and produce a command that does not run.
+        - sprintfQuotedString
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+      allow-unused: false
+    revive:
+      rules:
+        - name: exported
+        - name: package-comments
+        - name: indent-error-flow
+        - name: var-naming
+        - name: error-strings
+        - name: context-as-argument
+
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - std-error-handling
+    rules:
+      # Test tables are long by nature and their strings repeat on purpose:
+      # the repetition is what makes each case readable in isolation.
+      - path: _test\.go
+        linters: [goconst, unparam]
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/lpogosu/k8s-troubleshoot-agent
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
