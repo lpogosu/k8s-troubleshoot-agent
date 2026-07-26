@@ -1,0 +1,159 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24",
+        "taints": [
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "effect": "NoSchedule"
+          }
+        ],
+        "unschedulable": true
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [],
+  "events": []
+}

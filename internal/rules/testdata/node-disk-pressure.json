@@ -1,0 +1,267 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasDiskPressure",
+            "message": "kubelet has disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "metadata": {
+        "name": "logs-shipper-8c7d9f6b5-r2knp",
+        "namespace": "observability",
+        "uid": "uid-logs-shipper-8c7d9f6b5-r2knp",
+        "creationTimestamp": "2026-07-16T09:34:38Z",
+        "labels": {
+          "app": "logs-shipper"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "logs-shipper-8c7d9f6b5",
+            "uid": "uid-logs-shipper-8c7d9f6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "shipper",
+            "image": "ghcr.io/example/shipper:1.9.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {}
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeName": "diag-worker"
+      },
+      "status": {
+        "phase": "Failed",
+        "startTime": "2026-07-16T09:34:42Z",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:34:22Z",
+            "lastProbeTime": null
+          }
+        ],
+        "reason": "Evicted",
+        "hostIP": "172.18.0.3",
+        "podIP": "10.244.1.17"
+      }
+    }
+  ],
+  "events": [
+    {
+      "metadata": {
+        "name": "diag-worker.185b2c1f9a4d2201",
+        "namespace": "default",
+        "creationTimestamp": "2026-07-16T09:33:02Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Node",
+        "name": "diag-worker",
+        "namespace": "default",
+        "uid": "uid-diag-worker"
+      },
+      "reason": "EvictionThresholdMet",
+      "message": "Attempting to reclaim ephemeral-storage",
+      "source": {
+        "component": "kubelet",
+        "host": "diag-worker"
+      },
+      "firstTimestamp": "2026-07-16T09:33:02Z",
+      "lastTimestamp": "2026-07-16T09:40:37Z",
+      "count": 6,
+      "type": "Warning",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "diag-worker"
+    },
+    {
+      "metadata": {
+        "name": "logs-shipper-8c7d9f6b5-r2knp.185b2c1f9a4d2202",
+        "namespace": "observability",
+        "creationTimestamp": "2026-07-16T09:34:42Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "logs-shipper-8c7d9f6b5-r2knp",
+        "namespace": "observability",
+        "uid": "uid-logs-shipper-8c7d9f6b5-r2knp"
+      },
+      "reason": "Evicted",
+      "message": "The node was low on resource: ephemeral-storage. Threshold quantity: 2Gi, available: 1.7Gi.",
+      "source": {
+        "component": "kubelet",
+        "host": "diag-worker"
+      },
+      "firstTimestamp": "2026-07-16T09:34:42Z",
+      "lastTimestamp": "2026-07-16T09:34:42Z",
+      "count": 1,
+      "type": "Warning",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "diag-worker"
+    }
+  ]
+}
