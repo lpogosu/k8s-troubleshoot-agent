@@ -1,0 +1,291 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [],
+  "deployments": [
+    {
+      "metadata": {
+        "name": "etl-worker",
+        "namespace": "analytics",
+        "uid": "uid-deploy-etl-worker",
+        "creationTimestamp": "2026-07-15T09:41:22Z",
+        "generation": 1,
+        "labels": {
+          "app": "etl-worker"
+        }
+      },
+      "spec": {
+        "replicas": 12,
+        "selector": {
+          "matchLabels": {
+            "app": "etl-worker"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "etl-worker"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "etl-worker",
+                "image": "ghcr.io/example/etl-worker:1.0.0",
+                "imagePullPolicy": "IfNotPresent",
+                "ports": [
+                  {
+                    "name": "http",
+                    "containerPort": 8080,
+                    "protocol": "TCP"
+                  }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "resources": {}
+              }
+            ]
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": "25%",
+            "maxSurge": "25%"
+          }
+        },
+        "revisionHistoryLimit": 10,
+        "progressDeadlineSeconds": 600
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 12,
+        "readyReplicas": 10,
+        "availableReplicas": 10,
+        "updatedReplicas": 10,
+        "unavailableReplicas": 2,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "lastUpdateTime": "2026-07-16T08:18:02Z",
+            "lastTransitionTime": "2026-07-16T08:18:02Z",
+            "reason": "MinimumReplicasAvailable",
+            "message": "Deployment has minimum availability."
+          },
+          {
+            "type": "ReplicaFailure",
+            "status": "True",
+            "lastUpdateTime": "2026-07-16T09:36:22Z",
+            "lastTransitionTime": "2026-07-16T09:36:22Z",
+            "reason": "FailedCreate",
+            "message": "pods \"etl-worker-7f9c8d6b5-\" is forbidden: exceeded quota: team-quota, requested: pods=1, used: pods=10, limited: pods=10"
+          }
+        ]
+      }
+    }
+  ],
+  "resourceQuotas": [
+    {
+      "metadata": {
+        "name": "team-quota",
+        "namespace": "analytics",
+        "uid": "uid-quota-team-quota",
+        "creationTimestamp": "2026-07-10T09:41:22Z"
+      },
+      "spec": {
+        "hard": {
+          "pods": "10",
+          "requests.cpu": "8",
+          "requests.memory": "16Gi"
+        }
+      },
+      "status": {
+        "hard": {
+          "pods": "10",
+          "requests.cpu": "8",
+          "requests.memory": "16Gi"
+        },
+        "used": {
+          "pods": "10",
+          "requests.cpu": "6",
+          "requests.memory": "12Gi"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "metadata": {
+        "name": "etl-worker-7f9c8d6b5.185b2c1f9a4c1101",
+        "namespace": "analytics",
+        "creationTimestamp": "2026-07-16T09:36:12Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "ReplicaSet",
+        "name": "etl-worker-7f9c8d6b5",
+        "namespace": "analytics",
+        "uid": "uid-etl-worker-7f9c8d6b5"
+      },
+      "reason": "FailedCreate",
+      "message": "(combined from similar events): Error creating: pods \"etl-worker-7f9c8d6b5-x8k2p\" is forbidden: exceeded quota: team-quota, requested: pods=1, used: pods=10, limited: pods=10",
+      "source": {
+        "component": "replicaset-controller",
+        "host": ""
+      },
+      "firstTimestamp": "2026-07-16T09:36:12Z",
+      "lastTimestamp": "2026-07-16T09:41:15Z",
+      "count": 34,
+      "type": "Warning",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": ""
+    }
+  ]
+}
