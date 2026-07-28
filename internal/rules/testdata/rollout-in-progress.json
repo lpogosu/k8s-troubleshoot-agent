@@ -1,0 +1,580 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "metadata": {
+        "name": "checkout-9f8c7d6b5-x4nqz",
+        "namespace": "shop",
+        "uid": "uid-checkout-9f8c7d6b5-x4nqz",
+        "creationTimestamp": "2026-07-16T09:41:11Z",
+        "labels": {
+          "app": "checkout",
+          "pod-template-hash": "9f8c7d6b5"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "checkout-9f8c7d6b5",
+            "uid": "uid-checkout-9f8c7d6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "checkout",
+            "image": "ghcr.io/example/checkout:2.15.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {},
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/readyz",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 5,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            }
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeName": "diag-worker"
+      },
+      "status": {
+        "phase": "Pending",
+        "startTime": "2026-07-16T09:41:13Z",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:41:12Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-07-16T09:41:13Z",
+            "lastProbeTime": null,
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [checkout]"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "checkout",
+            "image": "ghcr.io/example/checkout:2.15.0",
+            "imageID": "sha256:ab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3f",
+            "containerID": "containerd://8f2c1d9e4b7a0c6538ff21ee9a4c7b10d2e3f4a5b6c7d8e9f0a1b2c3d4e5f607",
+            "ready": false,
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating",
+                "message": ""
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "172.18.0.3",
+        "podIP": "10.244.1.17"
+      }
+    },
+    {
+      "metadata": {
+        "name": "checkout-9f8c7d6b5-b7wjm",
+        "namespace": "shop",
+        "uid": "uid-checkout-9f8c7d6b5-b7wjm",
+        "creationTimestamp": "2026-07-16T09:41:06Z",
+        "labels": {
+          "app": "checkout",
+          "pod-template-hash": "9f8c7d6b5"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "checkout-9f8c7d6b5",
+            "uid": "uid-checkout-9f8c7d6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "checkout",
+            "image": "ghcr.io/example/checkout:2.15.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {},
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/readyz",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 5,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            }
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeName": "diag-worker"
+      },
+      "status": {
+        "phase": "Running",
+        "startTime": "2026-07-16T09:41:08Z",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:41:10Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:41:10Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-07-16T09:41:10Z",
+            "lastProbeTime": null,
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [checkout]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastTransitionTime": "2026-07-16T09:41:10Z",
+            "lastProbeTime": null,
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [checkout]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:41:08Z",
+            "lastProbeTime": null
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "checkout",
+            "image": "ghcr.io/example/checkout:2.15.0",
+            "imageID": "sha256:ab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3f",
+            "containerID": "containerd://8f2c1d9e4b7a0c6538ff21ee9a4c7b10d2e3f4a5b6c7d8e9f0a1b2c3d4e5f607",
+            "ready": false,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-07-16T09:41:09Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "172.18.0.3",
+        "podIP": "10.244.1.17"
+      }
+    }
+  ],
+  "deployments": [
+    {
+      "metadata": {
+        "name": "checkout",
+        "namespace": "shop",
+        "uid": "uid-deploy-checkout",
+        "creationTimestamp": "2026-07-16T09:41:04Z",
+        "generation": 1,
+        "labels": {
+          "app": "checkout"
+        }
+      },
+      "spec": {
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "checkout"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "checkout"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "checkout",
+                "image": "ghcr.io/example/checkout:1.0.0",
+                "imagePullPolicy": "IfNotPresent",
+                "ports": [
+                  {
+                    "name": "http",
+                    "containerPort": 8080,
+                    "protocol": "TCP"
+                  }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "resources": {}
+              }
+            ]
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": "25%",
+            "maxSurge": "25%"
+          }
+        },
+        "revisionHistoryLimit": 10,
+        "progressDeadlineSeconds": 600
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 2,
+        "readyReplicas": 0,
+        "availableReplicas": 0,
+        "updatedReplicas": 2,
+        "unavailableReplicas": 2,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "lastUpdateTime": "2026-07-15T11:28:02Z",
+            "lastTransitionTime": "2026-07-15T11:28:02Z",
+            "reason": "MinimumReplicasAvailable",
+            "message": "Deployment has minimum availability."
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "lastUpdateTime": "2026-07-15T11:28:02Z",
+            "lastTransitionTime": "2026-07-15T09:48:02Z",
+            "reason": "NewReplicaSetAvailable",
+            "message": "ReplicaSet \"checkout-6b8f9c7d5\" has successfully progressed."
+          }
+        ]
+      }
+    }
+  ],
+  "services": [
+    {
+      "metadata": {
+        "name": "checkout",
+        "namespace": "shop",
+        "uid": "uid-svc-checkout",
+        "creationTimestamp": "2026-07-16T09:41:02Z"
+      },
+      "spec": {
+        "selector": {
+          "app": "checkout"
+        },
+        "clusterIP": "10.96.14.201",
+        "type": "ClusterIP",
+        "sessionAffinity": "None",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 8080
+          }
+        ]
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    }
+  ],
+  "endpointSlices": [
+    {
+      "metadata": {
+        "name": "checkout-x7k2m",
+        "namespace": "shop",
+        "creationTimestamp": "2026-07-15T09:48:02Z",
+        "labels": {
+          "kubernetes.io/service-name": "checkout",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io"
+        }
+      },
+      "addressType": "IPv4",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.1.31"
+          ],
+          "conditions": {
+            "ready": false,
+            "serving": false,
+            "terminating": false
+          },
+          "nodeName": "diag-worker",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "checkout-9f8c7d6b5-b7wjm",
+            "namespace": "shop",
+            "uid": "uid-checkout-9f8c7d6b5-b7wjm"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "name": "http",
+          "protocol": "TCP",
+          "port": 8080
+        }
+      ]
+    }
+  ],
+  "persistentVolumeClaims": [
+    {
+      "metadata": {
+        "name": "checkout-tmp",
+        "namespace": "shop",
+        "uid": "uid-pvc-checkout-tmp",
+        "creationTimestamp": "2026-07-16T09:41:16Z"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "5Gi"
+          }
+        },
+        "volumeMode": "Filesystem",
+        "storageClassName": "standard"
+      },
+      "status": {
+        "phase": "Pending"
+      }
+    }
+  ],
+  "events": [
+    {
+      "metadata": {
+        "name": "checkout-9f8c7d6b5-b7wjm.185b2c1f9a4f9901",
+        "namespace": "shop",
+        "creationTimestamp": "2026-07-16T09:41:16Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "checkout-9f8c7d6b5-b7wjm",
+        "namespace": "shop",
+        "uid": "uid-checkout-9f8c7d6b5-b7wjm",
+        "fieldPath": "spec.containers{checkout}"
+      },
+      "reason": "Unhealthy",
+      "message": "Readiness probe failed: Get \"http://10.244.1.31:8080/readyz\": dial tcp 10.244.1.31:8080: connect: connection refused",
+      "source": {
+        "component": "kubelet",
+        "host": "diag-worker"
+      },
+      "firstTimestamp": "2026-07-16T09:41:16Z",
+      "lastTimestamp": "2026-07-16T09:41:16Z",
+      "count": 1,
+      "type": "Warning",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "diag-worker"
+    }
+  ]
+}

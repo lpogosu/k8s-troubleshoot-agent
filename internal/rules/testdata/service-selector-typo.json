@@ -1,0 +1,406 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "metadata": {
+        "name": "web-5d7c9f8b6-4jm2n",
+        "namespace": "storefront",
+        "uid": "uid-web-5d7c9f8b6-4jm2n",
+        "creationTimestamp": "2026-07-16T09:11:18Z",
+        "labels": {
+          "app": "webapp",
+          "pod-template-hash": "5d7c9f8b6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-5d7c9f8b6",
+            "uid": "uid-web-5d7c9f8b6",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "web",
+            "image": "ghcr.io/example/web:8.1.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {}
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeName": "diag-worker"
+      },
+      "status": {
+        "phase": "Running",
+        "startTime": "2026-07-16T09:11:22Z",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:00Z",
+            "lastProbeTime": null
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "web",
+            "image": "ghcr.io/example/web:8.1.0",
+            "imageID": "sha256:ab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3f",
+            "containerID": "containerd://8f2c1d9e4b7a0c6538ff21ee9a4c7b10d2e3f4a5b6c7d8e9f0a1b2c3d4e5f607",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-07-16T09:11:27Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "172.18.0.3",
+        "podIP": "10.244.1.17"
+      }
+    },
+    {
+      "metadata": {
+        "name": "web-5d7c9f8b6-p9kdt",
+        "namespace": "storefront",
+        "uid": "uid-web-5d7c9f8b6-p9kdt",
+        "creationTimestamp": "2026-07-16T09:11:18Z",
+        "labels": {
+          "app": "webapp",
+          "pod-template-hash": "5d7c9f8b6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-5d7c9f8b6",
+            "uid": "uid-web-5d7c9f8b6",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "web",
+            "image": "ghcr.io/example/web:8.1.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {}
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeName": "diag-worker"
+      },
+      "status": {
+        "phase": "Running",
+        "startTime": "2026-07-16T09:11:22Z",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:02Z",
+            "lastProbeTime": null
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-07-16T09:13:00Z",
+            "lastProbeTime": null
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "web",
+            "image": "ghcr.io/example/web:8.1.0",
+            "imageID": "sha256:ab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3fab3f",
+            "containerID": "containerd://8f2c1d9e4b7a0c6538ff21ee9a4c7b10d2e3f4a5b6c7d8e9f0a1b2c3d4e5f607",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-07-16T09:11:27Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "172.18.0.3",
+        "podIP": "10.244.1.17"
+      }
+    }
+  ],
+  "deployments": [
+    {
+      "metadata": {
+        "name": "web",
+        "namespace": "storefront",
+        "uid": "uid-deploy-web",
+        "creationTimestamp": "2026-07-15T09:41:22Z",
+        "generation": 1,
+        "labels": {
+          "app": "webapp"
+        }
+      },
+      "spec": {
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "webapp"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "webapp"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "web",
+                "image": "ghcr.io/example/web:1.0.0",
+                "imagePullPolicy": "IfNotPresent",
+                "ports": [
+                  {
+                    "name": "http",
+                    "containerPort": 8080,
+                    "protocol": "TCP"
+                  }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "resources": {}
+              }
+            ]
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": "25%",
+            "maxSurge": "25%"
+          }
+        },
+        "revisionHistoryLimit": 10,
+        "progressDeadlineSeconds": 600
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 2,
+        "readyReplicas": 2,
+        "availableReplicas": 2,
+        "updatedReplicas": 2,
+        "unavailableReplicas": 0,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "lastUpdateTime": "2026-07-15T11:28:02Z",
+            "lastTransitionTime": "2026-07-15T11:28:02Z",
+            "reason": "MinimumReplicasAvailable",
+            "message": "Deployment has minimum availability."
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "lastUpdateTime": "2026-07-15T11:28:02Z",
+            "lastTransitionTime": "2026-07-15T09:48:02Z",
+            "reason": "NewReplicaSetAvailable",
+            "message": "ReplicaSet \"web-6b8f9c7d5\" has successfully progressed."
+          }
+        ]
+      }
+    }
+  ],
+  "services": [
+    {
+      "metadata": {
+        "name": "web",
+        "namespace": "storefront",
+        "uid": "uid-svc-web",
+        "creationTimestamp": "2026-07-15T09:41:22Z"
+      },
+      "spec": {
+        "selector": {
+          "app": "web"
+        },
+        "clusterIP": "10.96.14.201",
+        "type": "ClusterIP",
+        "sessionAffinity": "None",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 8080
+          }
+        ]
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    }
+  ],
+  "endpointSlices": [],
+  "events": []
+}
