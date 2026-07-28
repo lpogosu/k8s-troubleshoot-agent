@@ -1,0 +1,248 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux",
+          "disktype": "ssd"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux",
+          "disktype": "ssd"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "metadata": {
+        "name": "chunker-8f9c7d6b5-kv2ln",
+        "namespace": "storage",
+        "uid": "uid-chunker-8f9c7d6b5-kv2ln",
+        "creationTimestamp": "2026-07-16T09:26:22Z",
+        "labels": {
+          "app": "chunker"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "chunker-8f9c7d6b5",
+            "uid": "uid-chunker-8f9c7d6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/example/app:1.2.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "nodeSelector": {
+          "disktype": "nvme"
+        }
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "False",
+            "lastTransitionTime": "2026-07-16T09:26:42Z",
+            "lastProbeTime": null,
+            "reason": "Unschedulable",
+            "message": "0/2 nodes are available: 2 node(s) didn't match Pod's node affinity/selector. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling."
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "metadata": {
+        "name": "chunker-8f9c7d6b5-kv2ln.185b2c1f9a4f3301",
+        "namespace": "storage",
+        "creationTimestamp": "2026-07-16T09:27:02Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "chunker-8f9c7d6b5-kv2ln",
+        "namespace": "storage",
+        "uid": "uid-chunker-8f9c7d6b5-kv2ln"
+      },
+      "reason": "FailedScheduling",
+      "message": "0/2 nodes are available: 2 node(s) didn't match Pod's node affinity/selector. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.",
+      "source": {
+        "component": "default-scheduler",
+        "host": ""
+      },
+      "firstTimestamp": "2026-07-16T09:27:02Z",
+      "lastTimestamp": "2026-07-16T09:40:30Z",
+      "count": 7,
+      "type": "Warning",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": ""
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "format": "kubediag.snapshot/v1",
+  "capturedAt": "2026-07-16T09:41:22Z",
+  "source": {
+    "context": "kind-diag",
+    "server": "https://127.0.0.1:39421",
+    "kubernetesVersion": "v1.32.3",
+    "namespace": ""
+  },
+  "nodes": [
+    {
+      "metadata": {
+        "name": "diag-worker",
+        "uid": "uid-node-diag-worker",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "diag-worker2",
+        "uid": "uid-node-diag-worker2",
+        "creationTimestamp": "2026-07-07T09:41:22Z",
+        "labels": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "diag-worker2",
+          "kubernetes.io/os": "linux"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24"
+      },
+      "status": {
+        "allocatable": {
+          "cpu": "2",
+          "ephemeral-storage": "76224326324",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "2",
+          "ephemeral-storage": "81117216Ki",
+          "memory": "8047112Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletHasSufficientPID",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2026-07-16T09:41:14Z",
+            "lastTransitionTime": "2026-07-16T03:41:22Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.32.3",
+          "containerRuntimeVersion": "containerd://1.7.24",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "metadata": {
+        "name": "warehouse-0",
+        "namespace": "reporting",
+        "uid": "uid-warehouse-0",
+        "creationTimestamp": "2026-07-16T09:26:22Z",
+        "labels": {
+          "app": "warehouse"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "warehouse",
+            "uid": "uid-warehouse",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "restartPolicy": "Always",
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/example/app:1.2.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "warehouse-data"
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "False",
+            "lastTransitionTime": "2026-07-16T09:26:42Z",
+            "lastProbeTime": null,
+            "reason": "Unschedulable",
+            "message": "0/2 nodes are available: pod has unbound immediate PersistentVolumeClaims. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling."
+          }
+        ]
+      }
+    }
+  ],
+  "persistentVolumeClaims": [
+    {
+      "metadata": {
+        "name": "warehouse-data",
+        "namespace": "reporting",
+        "uid": "uid-pvc-warehouse-data",
+        "creationTimestamp": "2026-07-16T09:26:12Z"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "100Gi"
+          }
+        },
+        "volumeMode": "Filesystem",
+        "storageClassName": "fast-ssd"
+      },
+      "status": {
+        "phase": "Pending"
+      }
+    }
+  ],
+  "events": [
+    {
+      "metadata": {
+        "name": "warehouse-0.185b2c1f9a4f4401",
+        "namespace": "reporting",
+        "creationTimestamp": "2026-07-16T09:26:22Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "warehouse-0",
+        "namespace": "reporting",
+        "uid": "uid-warehouse-0"
+      },
+      "reason": "FailedScheduling",
+      "message": "0/2 nodes are available: pod has unbound immediate PersistentVolumeClaims. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.",
+      "source": {
+        "component": "default-scheduler",
+        "host": ""
+      },
+      "firstTimestamp": "2026-07-16T09:26:22Z",
+      "lastTimestamp": "2026-07-16T09:40:52Z",
+      "count": 11,
+      "type": "Warning",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": ""
+    },
+    {
+      "metadata": {
+        "name": "warehouse-data.185b2c1f9a4f4402",
+        "namespace": "reporting",
+        "creationTimestamp": "2026-07-16T09:26:17Z"
+      },
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "warehouse-data",
+        "namespace": "reporting",
+        "uid": "uid-warehouse-data"
+      },
+      "reason": "ProvisioningFailed",
+      "message": "storageclass.storage.k8s.io \"fast-ssd\" not found",
+      "source": {
+        "component": "persistentvolume-controller",
+        "host": ""
+      },
+      "firstTimestamp": "2026-07-16T09:26:17Z",
+      "lastTimestamp": "2026-07-16T09:41:00Z",
+      "count": 15,
+      "type": "Warning",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": ""
+    }
+  ]
+}
