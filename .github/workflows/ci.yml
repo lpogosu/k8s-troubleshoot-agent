@@ -1,0 +1,151 @@
+---
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GO_VERSION: "1.23"
+  GOLANGCI_VERSION: v2.1.6
+
+jobs:
+  lint:
+    name: golangci-lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - name: Set up Go
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed  # v5.1.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: gofmt
+        # gofmt exits 0 whatever it finds, so the check is on its output.
+        run: |
+          unformatted=$(gofmt -l ./cmd ./internal)
+          if [ -n "$unformatted" ]; then
+            echo "these files are not gofmt-clean:"
+            echo "$unformatted"
+            exit 1
+          fi
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a  # v9.3.0
+        with:
+          version: ${{ env.GOLANGCI_VERSION }}
+          args: --timeout=5m
+
+  test:
+    name: test
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - name: Set up Go
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed  # v5.1.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: go vet
+        run: go vet ./...
+
+      # The whole point of the snapshot design: the rule engine is exercised
+      # against fixture snapshots, so CI needs no cluster and no network.
+      - name: Test
+        run: go test -race ./...
+
+      - name: Coverage summary
+        run: make cover
+
+  build:
+    name: build
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+          - goos: linux
+            goarch: arm64
+          - goos: darwin
+            goarch: arm64
+          - goos: windows
+            goarch: amd64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - name: Set up Go
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed  # v5.1.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Build ${{ matrix.goos }}/${{ matrix.goarch }}
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: "0"
+        run: |
+          go build -trimpath \
+            -ldflags "-s -w -X main.version=${GITHUB_SHA::7}" \
+            -o "kubediag-${GOOS}-${GOARCH}" ./cmd/kubediag
+
+  smoke:
+    name: smoke
+    runs-on: ubuntu-24.04
+    needs: [test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - name: Set up Go
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed  # v5.1.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Build
+        run: make build
+
+      # A green unit-test run still leaves the CLI wiring untested. These three
+      # calls are what a user actually types.
+      - name: kubediag rules
+        run: ./bin/kubediag rules
+
+      - name: kubediag diagnose, text output
+        run: ./bin/kubediag diagnose -f internal/rules/testdata/mixed-incident.json
+
+      - name: kubediag diagnose, JSON output is valid JSON
+        run: |
+          ./bin/kubediag diagnose \
+            -f internal/rules/testdata/mixed-incident.json -o json \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin); print(len(d["findings"]), "findings")'
+
+      - name: a clean snapshot exits 0 even with --fail-on critical
+        run: |
+          ./bin/kubediag diagnose \
+            -f internal/rules/testdata/healthy.json --fail-on critical
+
+      - name: an unhealthy snapshot exits 2 with --fail-on critical
+        run: |
+          set +e
+          ./bin/kubediag diagnose \
+            -f internal/rules/testdata/mixed-incident.json --fail-on critical > /dev/null
+          code=$?
+          set -e
+          if [ "$code" -ne 2 ]; then
+            echo "expected exit code 2, got $code"
+            exit 1
+          fi
